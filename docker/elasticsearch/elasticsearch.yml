@@ -1,0 +1,6 @@
+network.host: 0.0.0.0
+#script.inline: true
+#script.indexed: true
+#script.engine.groovy.inline: true
+#script.engine.groovy.stored: true
+#script.allowed_types: inline

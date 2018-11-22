@@ -1,0 +1,43 @@
+version: '2'
+
+services:
+  cassandra:
+    image: cassandra:3
+    container_name: cassandra
+    ports:
+      - "7000:7000"
+      - "9042:9042"
+    environment:
+      - "CASSANDRA_CLUSTER_NAME=OUR_DOCKERIZED_CASSANDRA_SINGLE_NODE_CLUSTER"
+
+  elasticsearch:
+#    image: elasticsearch:2.3.3
+    image: elasticsearch:6.4.2
+    container_name: elasticsearch
+    hostname: elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - "TZ=Europe/Amsterdam"
+    volumes:
+      - "./elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml"
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.4.2
+    container_name: kibana
+    ports:
+      - "5601:5601"
+    environment:
+      - "ELASTICSEARCH_URL=http://elasticsearch:9200"
+    volumes:
+      - "./elasticsearch/kibana.yml:/usr/share/kibana/config/kibana.yml"
+#  bookstore:
+#    image: chapter5-server-complete:latest
+#    container_name: bookstore
+#    environment:
+#      - "TZ=Europe/Amsterdam"
+#      - "CASSANDRA_HOST=cassandra"
+#      - "ELASTICSEARCH_HOST=elasticsearch"
+#      - "PERSISTENT_ENTITY_TIMEOUT=10s"
+#    ports:
+#      - "8080:8080"

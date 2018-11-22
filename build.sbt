@@ -186,4 +186,4 @@ lagomCassandraCleanOnStart in ThisBuild := false
 
 // register 'elastic-search' as an unmanaged service on the service locator so that at 'runAll' our code
 // will resolve 'elastic-search' and use it. See also com.example.com.ElasticSearch
-lagomUnmanagedServices in ThisBuild += ("elastic-search" -> "http://127.0.0.1:9200")
+lagomUnmanagedServices in ThisBuild += ("elastic-search" -> "http://192.168.170.100:9200")
